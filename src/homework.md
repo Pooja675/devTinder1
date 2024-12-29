@@ -32,3 +32,4 @@
 - Difference app.use and app.all
 - write a dummy middleware for admin
 - write a dummy middleware  for user routes, except /user/login
+- Error handling using app.use("/", (err, req,res, next) => {})

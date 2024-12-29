@@ -25,6 +25,31 @@ app.get("/admin/deleteUser", (req,res)=> {
 })
 
 
+app.get("/getUserData", (req,res) => {
+
+    try {
+
+        //Logic of db call and get user data
+     throw new Error("gdsgdstyyt")
+     res.send("User data sent")
+        
+    } catch (error) {
+
+        res.status(500).send("Somthing went wrong")
+        
+    }
+    
+})
+
+// app.use("/", (err, req,res, next) => {
+
+//     if(err) {
+//         // Log your error
+//         res.status(500).send("Somthing went wrong")
+//     }
+// })
+
+
 app.listen("5555", () => {
     console.log("Server is running successfully on port 55555....")
 })
