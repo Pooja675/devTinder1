@@ -2,29 +2,29 @@ const express = require("express")
 
 const app = express()
 
-app.get("/user", (req,res) => {
-    console.log( req.query)
-    res.send({firstName:"Pooja", lastName: "Kumari"})
+const {adminAuth, userAuth} = require("./middlewares/auth")
+
+app.use("/admin", adminAuth)
+
+app.post("/user/login", (req,res) => {
+
+    res.send("User logged in successfully")
+    
 })
 
-app.get("/user/:userId/:name/:password", (req,res) => {
-    console.log( req.params)
-    res.send({firstName:"Pooja", lastName: "Kumari"})
+app.get("/user/data",userAuth, (req,res) => {
+    res.send("User data sent")
 })
 
-app.post("/user", (req,res) => {
-    res.send("Data successfully saved in the database....")
+app.get("/admin/getAllData", (req,res) => {
+    res.send("All data sent")
 })
 
-app.delete("/user", (req,res) => {
-    res.send("Data deleted successfully....")
-})
-
-app.use("/test",(req, res) => {
-    res.send("Hello from server!")
+app.get("/admin/deleteUser", (req,res)=> {
+    res.send("Deleted all data")
 })
 
 
-app.listen(5555, () => {
-    console.log("Server is successfully listening on port 5555....")
+app.listen("5555", () => {
+    console.log("Server is running successfully on port 55555....")
 })
