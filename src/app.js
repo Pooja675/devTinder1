@@ -1,55 +1,33 @@
-const express = require("express")
+const express = require("express");
+const connectDB = require("./config/database");
+const app = express();
+const User = require("./models/user");
 
-const app = express()
+app.post("/signup", async (req, res) => {
+  //Creating new instance of the user model
 
-const {adminAuth, userAuth} = require("./middlewares/auth")
+  const user = new User({
+    firstName: "Aarti",
+    lastName: "Kumari",
+    emailId: "aarti435@gmail.com",
+    password: "aarti@8974",
+  });
 
-app.use("/admin", adminAuth)
+  try {
+    await user.save();
+    res.send("User added successfully!!");
+  } catch (error) {
+    res.status(400).send("Error saving the user:", error.message);
+  }
+});
 
-app.post("/user/login", (req,res) => {
-
-    res.send("User logged in successfully")
-    
-})
-
-app.get("/user/data",userAuth, (req,res) => {
-    res.send("User data sent")
-})
-
-app.get("/admin/getAllData", (req,res) => {
-    res.send("All data sent")
-})
-
-app.get("/admin/deleteUser", (req,res)=> {
-    res.send("Deleted all data")
-})
-
-
-app.get("/getUserData", (req,res) => {
-
-    try {
-
-        //Logic of db call and get user data
-     throw new Error("gdsgdstyyt")
-     res.send("User data sent")
-        
-    } catch (error) {
-
-        res.status(500).send("Somthing went wrong")
-        
-    }
-    
-})
-
-// app.use("/", (err, req,res, next) => {
-
-//     if(err) {
-//         // Log your error
-//         res.status(500).send("Somthing went wrong")
-//     }
-// })
-
-
-app.listen("5555", () => {
-    console.log("Server is running successfully on port 55555....")
-})
+connectDB()
+  .then(() => {
+    console.log("Database connection established...");
+    app.listen("5555", () => {
+      console.log("Server is connected successfully on port 5555...");
+    });
+  })
+  .catch(() => {
+    console.log("Databse cannot be connected....");
+  });
