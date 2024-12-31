@@ -46,3 +46,18 @@
 - JS object and JSON (difference)
 - Add the express json middleware to your app
 - Make your signup API dynamic to recive data from end users ( it can be browser, postman)
+- User.findone with duplicate email ids, which object returned
+- API - get user by email
+- API- Feed API - GET /feed --- get all users from the database
+- Create DELETE api for user
+- Difference between Patch and Put
+- API - Update a user
+- Explore mongoose documentation for model methods
+
+- Explore schema type option fron the documentation
+- add required, unique, minLength, maxLength, min, max, default
+- Create customs validate function for the gender
+- Improve DB Schema - Put all appropriate validation for each field of the schema 
+- Add timestamp to the userSchema 
+- Api level validation on Patch request and signup post api
+- Data sanitizing -- Add api level validation for field
